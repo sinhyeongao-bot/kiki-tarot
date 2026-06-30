@@ -1,0 +1,23 @@
+{
+  "name": "kiki-tarot",
+  "version": "1.0.0",
+  "description": "KIKI Tarot - A mystical tarot card drawing assistant",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.1",
+    "autoprefixer": "^10.5.2",
+    "next": "^14.2.35",
+    "postcss": "^8.5.16",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.8.2"
+  }
+}

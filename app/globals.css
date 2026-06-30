@@ -1,0 +1,346 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg-primary: #030305;
+  --bg-secondary: #0a0810;
+  --card-bg: #12100a;
+  --gold-primary: #d4af37;
+  --gold-light: #f4d03f;
+  --gold-dark: #a08520;
+  --accent-purple: #3d1a5c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(61, 26, 92, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 0% 50%, rgba(61, 26, 92, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 50%, rgba(61, 26, 92, 0.1) 0%, transparent 40%),
+    linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #05030a 100%);
+  min-height: 100vh;
+  color: #e8e8e8;
+  overflow-x: hidden;
+}
+
+/* Elegant starfield */
+.starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.starfield::before,
+.starfield::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.starfield::before {
+  background-image:
+    radial-gradient(1px 1px at 8% 12%, rgba(212, 175, 55, 0.2), transparent),
+    radial-gradient(1px 1px at 18% 38%, rgba(212, 175, 55, 0.12), transparent),
+    radial-gradient(1px 1px at 32% 8%, rgba(244, 208, 63, 0.15), transparent),
+    radial-gradient(1px 1px at 45% 55%, rgba(212, 175, 55, 0.1), transparent),
+    radial-gradient(1px 1px at 58% 22%, rgba(244, 208, 63, 0.18), transparent),
+    radial-gradient(1px 1px at 72% 68%, rgba(212, 175, 55, 0.08), transparent),
+    radial-gradient(1px 1px at 85% 15%, rgba(212, 175, 55, 0.14), transparent),
+    radial-gradient(1px 1px at 92% 85%, rgba(244, 208, 63, 0.12), transparent),
+    radial-gradient(1.5px 1.5px at 25% 75%, rgba(212, 175, 55, 0.1), transparent),
+    radial-gradient(1.5px 1.5px at 78% 42%, rgba(244, 208, 63, 0.08), transparent),
+    radial-gradient(1px 1px at 52% 88%, rgba(212, 175, 55, 0.16), transparent),
+    radial-gradient(1px 1px at 68% 32%, rgba(212, 175, 55, 0.1), transparent);
+  background-size: 500px 500px;
+}
+
+.starfield::after {
+  background-image:
+    radial-gradient(circle at 35% 25%, rgba(212, 175, 55, 0.06) 0%, transparent 2%),
+    radial-gradient(circle at 65% 75%, rgba(212, 175, 55, 0.04) 0%, transparent 1.5%),
+    radial-gradient(circle at 50% 45%, rgba(244, 208, 63, 0.03) 0%, transparent 2%);
+  background-size: 800px 800px;
+  animation: starFloat 120s linear infinite;
+}
+
+@keyframes starFloat {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-300px) translateX(150px); }
+}
+
+/* Mystical orb */
+.mystical-orb {
+  position: fixed;
+  top: -250px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(61, 26, 92, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.1));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.15));
+}
+
+/* Card animations */
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-reveal {
+  animation: cardReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Neon glow effects */
+.glow-neon-gold {
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.4),
+    0 0 40px rgba(212, 175, 55, 0.2),
+    0 0 60px rgba(212, 175, 55, 0.1),
+    inset 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.glow-neon-purple {
+  box-shadow:
+    0 0 20px rgba(147, 51, 234, 0.4),
+    0 0 40px rgba(147, 51, 234, 0.2),
+    0 0 60px rgba(147, 51, 234, 0.1),
+    inset 0 0 20px rgba(147, 51, 234, 0.1);
+}
+
+/* Standard glow */
+.glow-gold {
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.15),
+    0 0 40px rgba(212, 175, 55, 0.08),
+    inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.glow-gold-hover:hover {
+  box-shadow:
+    0 0 30px rgba(212, 175, 55, 0.25),
+    0 0 60px rgba(212, 175, 55, 0.12),
+    inset 0 0 20px rgba(212, 175, 55, 0.08);
+}
+
+/* Gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-primary) 40%, var(--gold-light) 60%, var(--gold-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(212, 175, 55, 0.25);
+  color: var(--gold-light);
+}
+
+/* Focus states */
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.4);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(18, 16, 10, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Divider */
+.divider {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), transparent);
+}
+
+/* Shimmer animation for buttons */
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  animation: shimmerSweep 2s ease-in-out infinite;
+}
+
+/* Button light sweep effect */
+.light-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-sweep::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.15) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+}
+
+.light-sweep:hover::before {
+  left: 100%;
+}
+
+/* Border glow utilities */
+.border-glow-gold {
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow:
+    0 0 10px rgba(212, 175, 55, 0.2),
+    inset 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+.border-glow-gold:hover {
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.3),
+    0 0 40px rgba(212, 175, 55, 0.15),
+    inset 0 0 15px rgba(212, 175, 55, 0.15);
+}
+
+/* Pulse animation for loading states */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(212, 175, 55, 0.4),
+      0 0 40px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(212, 175, 55, 0.6),
+      0 0 60px rgba(212, 175, 55, 0.3);
+  }
+}
+
+.neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Premium button base styles */
+.btn-neon {
+  position: relative;
+  background: linear-gradient(135deg, rgba(18, 16, 10, 0.9) 0%, rgba(30, 25, 15, 0.9) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-neon:hover {
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow:
+    0 0 25px rgba(212, 175, 55, 0.3),
+    0 0 50px rgba(212, 175, 55, 0.15),
+    inset 0 0 20px rgba(212, 175, 55, 0.1);
+  transform: scale(1.03);
+}
+
+.btn-neon:active {
+  transform: scale(0.97);
+}
+
+/* Shimmer for copied state */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
